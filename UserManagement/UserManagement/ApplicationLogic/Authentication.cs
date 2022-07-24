@@ -1,4 +1,4 @@
-﻿using AuthenticationWithClie.ApplicationLogic.Validations;
+using AuthenticationWithClie.ApplicationLogic.Validations;
 using AuthenticationWithClie.Database.Repository;
 using AuthenticationWithClie.Database.Models;
 using System;
@@ -90,7 +90,5 @@ namespace AuthenticationWithClie.ApplicationLogic
                 Console.WriteLine();
             }
         }
-
-
     }
 }
