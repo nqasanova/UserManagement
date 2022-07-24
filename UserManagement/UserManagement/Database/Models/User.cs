@@ -1,55 +1,34 @@
-using AuthenticationWithClie.Database.Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UserManagement.Database.Models;
-
-namespace AuthenticationWithClie.Database.Models
+namespace UserManagement.Database.Models
 {
-    public class User
+    public class Report
     {
-        public int Id { get; private set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public List<Report> Report { get; set; }
-        public DateTime RegistrationDate { get; } = DateTime.Now;
+        public static int row = 1;
+        public int Row { get; set; }
+        public string Reporter { get; set; }
+        public string Receiver { get; set; }
+        public string Text { get; set; }
+        public bool IsReceiverAdmin { get; set; }
+        public DateTime ReportTime { get; set; }
 
-        public User(string firstName, string lastName, string email, string password, int id)
+        public Report (string reporter, string receiver, string text, bool isReceiverAdmin = false)
         {
-            FirstName = firstName;
-            LastName = lastName;
-            Email = email;
-            Password = password;
-            Id = id;
+            Row = row++;
+            Reporter = reporter;
+            Receiver = receiver;
+            Text = text;
+            IsReceiverAdmin = isReceiverAdmin;
+            ReportTime = DateTime.Now;
         }
 
-        public User(string firstName, string lastName, string email, string password)
+        public virtual string GetUserReportInfo()
         {
-            FirstName = firstName;
-            LastName = lastName;
-            Email = email;
-            Password = password;
-            Id = UserRepository.IdCounter;
+            return $"Row No : {Row}, Reporter : {Reporter}, Receiver : {Receiver}, Text : {Text}, Is the person receiving the text admin : {IsReceiverAdmin}, Report time : {ReportTime}";
         }
 
-        public User(string firstName, string lastName)
+        public string GetAdminReportInfo()
         {
-            FirstName = firstName;
-            LastName = lastName;
-        }
-
-        public User(List<Report> report)
-        {
-            Report = report;
-        }
-
-        public virtual string GetInfo()
-        {
-            return $"First name : {FirstName}, Last name : {LastName}, Email : {Email}";
+            return $"Row No : {Row}, Reporter : {Reporter}, Receiver : {Receiver}, Text : {Text}, Is the person receiving the text admin : {IsReceiverAdmin = true}, Report time : {ReportTime}";
         }
     }
 }
