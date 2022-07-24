@@ -1,4 +1,4 @@
-﻿using AuthenticationWithClie.Database.Repository;
+using AuthenticationWithClie.Database.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,36 +9,30 @@ namespace AuthenticationWithClie.Database.Models
 {
     public class Admin : User
     {
-        private Func<string> getFirstName;
-        private Func<string> getLastName;
-        private string v1;
-        private string v2;
+        public static int row = 1;
+        public int Row { get; set; }
 
         public Admin(string firstName, string lastName, string email, string password, int id)
             : base(firstName, lastName, email, password, id)
         {
-
-
+            Row = row++;
         }
 
         public Admin(string firstName, string lastName, string email, string password)
             : base(firstName, lastName, email, password)
         {
-
-
+            Row = row++;
         }
 
-        public Admin(Func<string> getFirstName, Func<string> getLastName, string v1, string v2)
+        public Admin(string firstName, string lastName)
+            :base(firstName, lastName)
         {
-            this.getFirstName = getFirstName;
-            this.getLastName = getLastName;
-            this.v1 = v1;
-            this.v2 = v2;
+
         }
 
         public override string GetInfo()
         {
-            return $"Hello admin, {FirstName} {LastName} {Email}";
+            return $"Row No : {Row}, User Id : {Id}, First name : {FirstName}, Last name :  {LastName}, Email :  {Email}, Registration Date : {RegistrationDate}";
         }
     }
 }
