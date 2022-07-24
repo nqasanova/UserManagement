@@ -1,4 +1,4 @@
-﻿using AuthenticationWithClie.ApplicationLogic;
+using AuthenticationWithClie.ApplicationLogic;
 using System;
 
 namespace AuthenticationWithClie.UI
@@ -7,37 +7,40 @@ namespace AuthenticationWithClie.UI
     {
         static void Main(string[] args)
         {
-            Dashboard.AdminPanel();
+            Console.WriteLine("Welcome to our website!");
+            Console.WriteLine();
 
+            Console.WriteLine("PAvailable Commands :");
+            Console.WriteLine("/register");
+            Console.WriteLine("/login");
+            Console.WriteLine("/exit");
 
-            //Console.WriteLine("Commands :");
-            //Console.WriteLine("/register");
-            //Console.WriteLine("/login");
-            //Console.WriteLine("/exit");
+            while (true)
+            {
+                Console.WriteLine();
+                Console.Write("Please enter command : ");
+                string command = Console.ReadLine();
 
-            //while (true)
-            //{
-            //    Console.WriteLine();
-            //    Console.Write("Enter command : ");
-            //    string command = Console.ReadLine();
+                if (command == "/register")
+                {
+                    Authentication.Register();
+                }
 
-            //    if (command == "/register")
-            //    {
-            //        Authentication.Register();
-            //    }
-            //    else if (command == "/login")
-            //    {
-            //        Authentication.Login();
-            //    }
-            //    else if(command == "/exit")
-            //    {
-            //        break;
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Command not found!");
-            //    }
-            //}
+                else if (command == "/login")
+                {
+                    Authentication.Login();
+                }
+
+                else if(command == "/exit")
+                {
+                    break;
+                }
+
+                else
+                {
+                    Console.WriteLine("Command not found!");
+                }
+            }
         }
     }
 }
